@@ -64,10 +64,7 @@
           {
             error("Sommige velden zijn leeg gelaten!");
           }
-        } else
-        {
-          error("Formulier is niet ingevuld!");
-        }
+        } 
       } else
       {
         error("CRSF Token is incorrect!");
