@@ -1,0 +1,20 @@
+/* Put your custom CSS rules here */
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap');
+
+main {
+  width: 800px;
+  position: relative;
+  margin: 0 auto;
+}
+header {
+  background-color: #8fe507;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  color: white;
+}
+* {
+    box-sizing: border-box;
+    font-family: 'M PLUS 1p', sans-serif;
+}
