@@ -7,6 +7,7 @@
   include "html.php";
   include "telephone.php";
   include "config.php";
+  include "send_mail.php";
 
   function error($message)
   {
@@ -39,15 +40,22 @@
               {
                 if(telephone_validate($telefoon))
                 {
-                  $stmt = mysqli_prepare($mysql, 'INSERT INTO `inschrijver`
+                  $stmt = mysqli_prepare($mysqli, 'INSERT INTO `inschrijver`
 											(`Inschrijf_ID`, `Voornaam`, `Achternaam`, `Geboortedatum`, `Telefoonnummer`, `Email`, `UniekeCode`)
 											VALUES (?, ?, ?, ?, ?, ?, ?)');
 
-											mysqli_stmt_bind_param($stmt, 'ssssssi', $uuid, $voornaam, $achternaam, $datum, $telefoon, $email, $uniekeCode);
+									mysqli_stmt_bind_param($stmt, 'ssssssi', $uuid, $voornaam, $achternaam, $datum, $telefoon, $email, $uniekeCode);
 
-											mysqli_stmt_execute($stmt);
+								  mysqli_stmt_execute($stmt);
 
-											$result = mysqli_stmt_get_result($stmt);
+								  $result = mysqli_stmt_get_result($stmt);
+                  if (!$result)
+                  {
+                    send_mail($email, $uuid, $voornaam, $achternaam, $datum, $telefoon, $uniekeCode);
+                  } else
+                  {
+                    error("Iets ging fout bij het verbinden met de database probeer het later opnieuw!");
+                  }
                 } else
                 {
                   error("Telefoon nummer klopt niet");
@@ -64,7 +72,7 @@
           {
             error("Sommige velden zijn leeg gelaten!");
           }
-        } 
+        }
       } else
       {
         error("CRSF Token is incorrect!");
