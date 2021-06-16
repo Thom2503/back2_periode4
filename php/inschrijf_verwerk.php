@@ -17,6 +17,7 @@
 
   $uniekeCode = rand(pow(10, 5-1), pow(10, 5)-1);
   $uuid = uuidv4();
+  $i = 1;
 
   display_header("Inschrijving verwerken...", $inFolder = true);
 
@@ -41,10 +42,10 @@
                 if(telephone_validate($telefoon))
                 {
                   $stmt = mysqli_prepare($mysqli, 'INSERT INTO `inschrijver`
-											(`Inschrijf_ID`, `Voornaam`, `Achternaam`, `Geboortedatum`, `Telefoonnummer`, `Email`, `UniekeCode`)
-											VALUES (?, ?, ?, ?, ?, ?, ?)');
+											(`Inschrijf_ID`, `count`, `Voornaam`, `Achternaam`, `Geboortedatum`, `Telefoonnummer`, `Email`, `UniekeCode`)
+											VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
 
-									mysqli_stmt_bind_param($stmt, 'ssssssi', $uuid, $voornaam, $achternaam, $datum, $telefoon, $email, $uniekeCode);
+									mysqli_stmt_bind_param($stmt, 'sisssssi', $uuid, $i, $voornaam, $achternaam, $datum, $telefoon, $email, $uniekeCode);
 
 								  mysqli_stmt_execute($stmt);
 
@@ -52,6 +53,8 @@
                   if (!$result)
                   {
                     send_mail($email, $uuid, $voornaam, $achternaam, $datum, $telefoon, $uniekeCode);
+
+                    mysqli_stmt_close($stmt);
                   } else
                   {
                     error("Iets ging fout bij het verbinden met de database probeer het later opnieuw!");
