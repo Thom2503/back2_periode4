@@ -14,9 +14,9 @@
     $headers = "From: GLR kaartjes";
 
     if (mail($to_email, $subject, $body, $headers)) {
-        echo "Email successfully sent to $to_email... <br> Je kan nu in je inbox kijken en check dan de informatie. <br> <button onclick='history.back(); return false;'>Ga terug</button>";
+        echo "Email successvol verzonden to $to_email... <br> Je kan nu in je inbox kijken en check dan de informatie. <br> <button onclick='history.back(); return false;'>Ga terug</button>";
     } else {
-        echo "Email sending failed... <br> <button onclick='history.back(); return false;'>Ga terug</button>";
+        echo "Email verzenden gefaald... <br> <button onclick='history.back(); return false;'>Ga terug</button>";
     }
   }
 ?>
