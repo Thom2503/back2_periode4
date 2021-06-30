@@ -64,7 +64,8 @@
                         <td><?php echo $rij['Telefoonnummer'] ?></td>
                         <td><?php echo $rij['Email'] ?></td>
                         <td><?php echo $rij['UniekeCode'] ?></td>
-                        <td> <a href="verwijder.php?u=<?php echo $rij['UniekeCode'] ?>&id=<?php echo $rij['Inschrijf_ID'] ?>">Verwijder</a> </td>
+                        <td> <a href="verwijder.php?u=<?php echo $rij['UniekeCode'] ?>&id=<?php echo $rij['Inschrijf_ID'] ?>&v=<?php echo $rij['Voornaam'] ?>&a=<?php echo $rij['Achternaam'] ?>&e=<?php echo $rij['Email'] ?>">
+                          Verwijder</a> </td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>

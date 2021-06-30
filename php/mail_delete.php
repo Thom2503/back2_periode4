@@ -1,5 +1,5 @@
 <?php
-  function send_mail($to, $uuid, $voornaam, $achternaam, $datum, $telefoon, $uniekeCode)
+  function delete_mail($to, $voornaam, $achternaam, $email, $uniekeCode)
   {
 
     require 'PHPMailer/src/Exception.php';
@@ -9,7 +9,7 @@
     //Instantiation and passing `true` enables exceptions
     $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 
-    $fh = fopen('../config.txt','r'); // is for the password it's in a txt file for safety measures
+    $fh = fopen('config.txt','r'); // is for the password it's in a txt file for safety measures
     while ($line = fgets($fh))
     {
       $password = $line;
@@ -34,16 +34,15 @@
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Aanvraag account voor Portfoliosite - $bedrijf';
         $mail->Body    = "
-          Uw gegevens uit het inschrijfformulier: <br>
+          U bent verwijderd uit de kaartjes wedstrijd met gegevens:
           - $voornaam $achternaam <br>
-          - $datum <br>
-          - $telefoon <br>
-          En onthoud uw unieke code die staat hier: <br>
-          $uniekeCode
+          - $uniekeCode <br>
+
+          Sorry voor het ongemak en wij hopen dat je volgende keer wel door mag.
         ";
 
         $mail->send();
-        echo "Email successvol verzonden... $to <br>Je kan nu in je inbox kijken en check dan de informatie.<br><button onclick='history.back(); return false;'>Ga terug</button>";
+        echo "Email successvol verzonden... $to <br><button onclick='history.back(); return false;'>Ga terug</button>";
     } catch (Exception $e) {
         echo "Email verzenden fout gegaan... <br> <button onclick='history.back(); return false;'>Ga terug</button> <br> Mailer Error: {$mail->ErrorInfo}";
     }
