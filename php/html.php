@@ -21,7 +21,11 @@
           <header>
             <h1>GLR Wedstrijd</h1>
             <em>Win kaartjes voor de eerste wedstrijd van het Nederlands elftal!</em><br>
-            <a href="inlog.php">Inloggen</a>
+            <?php if ($inFolder == true): ?>
+              <a href="../inlog.php">Inloggen</a> | <a href="../loguit.php">Uitloggen</a>
+            <?php else: ?>
+              <a href="inlog.php">Inloggen</a> | <a href="loguit.php">Uitloggen</a>
+            <?php endif; ?>
           </header>
     <?php
   }
