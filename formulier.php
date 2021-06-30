@@ -16,7 +16,7 @@
           <h2>Helaas...</h2>
           <p>Je bent te laat met het inschrijven. <br>
             Maar blijf de pagina checken het kan zijn dat iemand uit de lijst word verwijderd. <br>
-            We hopen dat degene die gewonnen hebben een gezellige tijd hebben tijdens de eerste wedstrijd van het Nederlands Elftal! 
+            We hopen dat degene die gewonnen hebben een gezellige tijd hebben tijdens de eerste wedstrijd van het Nederlands Elftal!
           </p>
         </div>
       <?php else: ?>

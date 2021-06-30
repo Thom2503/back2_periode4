@@ -20,7 +20,8 @@
         <body>
           <header>
             <h1>GLR Wedstrijd</h1>
-            <em>Win kaartjes voor de eerste wedstrijd van het Nederlands elftal!</em>
+            <em>Win kaartjes voor de eerste wedstrijd van het Nederlands elftal!</em><br>
+            <a href="inlog.php">Inloggen</a>
           </header>
     <?php
   }
